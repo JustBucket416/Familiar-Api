@@ -1,0 +1,31 @@
+plugins {
+    id 'com.stepango.androidjar' version '0.1'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.61'
+}
+
+repositories {
+    jcenter()
+}
+
+sourceSets.main.kotlin.srcDirs += 'src/main/kotlin'
+
+group 'justbucket.familiar'
+
+dependencies {
+    compileOnly 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.61'
+    compileOnly files(getAndroidJar())
+}
+
+java {
+    //withSourcesJar()
+}
+
+def getAndroidJar() {
+    def localPropertiesFile = new File("${projectDir}/local.properties")
+    def localProperties = new Properties()
+    localProperties.load(localPropertiesFile.newReader())
+
+    def sdkDir = localProperties.getProperty("sdk.dir")
+    def platformsPath = file("${sdkDir}/platforms/").listFiles()[0].path
+    file("${platformsPath}/android.jar")
+}
