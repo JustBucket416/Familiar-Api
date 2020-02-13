@@ -1,6 +1,7 @@
 plugins {
-    id 'com.stepango.androidjar' version '0.1'
     id 'org.jetbrains.kotlin.jvm' version '1.3.61'
+    id 'com.jfrog.bintray' version '1.8.4'
+    id 'maven-publish'
 }
 
 repositories {
@@ -13,19 +14,64 @@ group 'justbucket.familiar'
 
 dependencies {
     compileOnly 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.61'
-    compileOnly files(getAndroidJar())
+    compileOnly 'justbucket.familiar.extension:androidjar:1.0.0'
 }
 
-java {
-    //withSourcesJar()
+task sourcesJar(type: Jar) {
+    from sourceSets.main.java.srcDirs
+    getArchiveClassifier().set('sources')
 }
 
-def getAndroidJar() {
-    def localPropertiesFile = new File("${projectDir}/local.properties")
-    def localProperties = new Properties()
-    localProperties.load(localPropertiesFile.newReader())
+artifacts {
+    archives sourcesJar
+}
 
-    def sdkDir = localProperties.getProperty("sdk.dir")
-    def platformsPath = file("${sdkDir}/platforms/").listFiles()[0].path
-    file("${platformsPath}/android.jar")
+def privateProperties = new Properties()
+
+if (new File('private.properties').exists()) {
+    privateProperties.load(new FileInputStream(file('private.properties')))
+}
+
+def bintrayUser = privateProperties.getProperty('bintray.user')
+def bintrayApiKey = privateProperties.getProperty('bintray.apikey')
+
+if (bintrayUser != null && bintrayApiKey != null) {
+    def publishedGroupId = 'justbucket.familiar'
+    def libraryVersion = '1.0.0'
+    def libraryDescription = 'Familiar extension api. Use this via compileOnly'
+    def gitUrl = 'https://github.com/JustBucket416/Familiar-Api'
+    def allLicenses = ['Apache-2.0']
+    apply plugin: 'com.jfrog.bintray'
+
+    version = libraryVersion
+
+    group = publishedGroupId
+
+    publishing {
+        publications {
+            bintrayPublication(MavenPublication) {
+                from components.java
+                groupId = publishedGroupId
+                artifactId 'extension'
+                version '1.0.0'
+            }
+        }
+    }
+
+    bintray {
+        user = bintrayUser
+        key = bintrayApiKey
+        publications = ['bintrayPublication']
+        configurations = ['archives']
+        pkg {
+            repo = 'Familiar-extension-api'
+            name = 'Familiar-extension'
+            desc = libraryDescription
+            vcsUrl = gitUrl
+            licenses = allLicenses
+            publish = true
+            publicDownloadNumbers = true
+            version.desc = libraryDescription
+        }
+    }
 }
