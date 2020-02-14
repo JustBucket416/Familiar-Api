@@ -10,6 +10,8 @@ import justbucket.familiar.extension.constants.EXTENSION_SHARE_ACTION
 import kotlin.system.exitProcess
 
 /**
+ * A proxy activity to handle share events
+ * 
  * @author JustBucket on 2019-07-22
  */
 @SuppressLint("Registered")
@@ -28,7 +30,7 @@ open class UriHandlerActivity : Activity() {
             exit()
         } else {
             Toast.makeText(
-                this, "You should install the core app to save the content",
+                this, "You should install the Familiar app to save the content",
                 Toast.LENGTH_LONG
             ).show()
             Handler(mainLooper).postDelayed({ exit() }, Toast.LENGTH_LONG.toLong())
