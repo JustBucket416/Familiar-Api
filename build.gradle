@@ -18,7 +18,7 @@ dependencies {
 }
 
 task sourcesJar(type: Jar) {
-    from sourceSets.main.java.srcDirs
+    from sourceSets.main.kotlin.srcDirs
     getArchiveClassifier().set('sources')
 }
 
@@ -50,7 +50,7 @@ if (bintrayUser != null && bintrayApiKey != null) {
     publishing {
         publications {
             bintrayPublication(MavenPublication) {
-                from components.java
+                from components.kotlin
                 groupId = publishedGroupId
                 artifactId 'extension'
                 version '1.0.0'

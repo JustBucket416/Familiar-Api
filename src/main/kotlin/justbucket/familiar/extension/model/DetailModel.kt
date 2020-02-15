@@ -5,20 +5,14 @@ package justbucket.familiar.extension.model
  * It is highly advised to override [equals]/[hashCode] in your subclass
  *
  * @constructor creates an instance of [DetailModel]
+ * @property imagePath path to any image in detail view
+ * @property title detail view title
+ * @property description detail view description
  *
  * @author JustBucket on 2019-07-22
  */
 open class DetailModel(
-    /**
-     * It is expected to have at least one image in detail view. [imagePath] is, namely, a path to that imahe
-     */
     val imagePath: String = "",
-    /**
-     * Model title
-     */
     val title: String = "",
-    /**
-     * Model description
-     */
     val description: String = ""
 )
