@@ -37,7 +37,7 @@ def bintrayApiKey = privateProperties.getProperty('bintray.apikey')
 
 if (bintrayUser != null && bintrayApiKey != null) {
     def publishedGroupId = 'justbucket.familiar'
-    def libraryVersion = '1.0.0'
+    def libraryVersion = '1.0.2'
     def libraryDescription = 'Familiar extension api. Use this via compileOnly'
     def gitUrl = 'https://github.com/JustBucket416/Familiar-Api'
     def allLicenses = ['Apache-2.0']
@@ -53,7 +53,7 @@ if (bintrayUser != null && bintrayApiKey != null) {
                 from components.kotlin
                 groupId = publishedGroupId
                 artifactId 'extension'
-                version '1.0.0'
+                version libraryVersion
             }
         }
     }

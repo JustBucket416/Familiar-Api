@@ -25,7 +25,7 @@ const val META_CONTENT_EXTENSION_LOCATOR_NAME = "familiar.extension.locator"
 /**
  * meta-data extension model creator key
  */
-const val META_CONTENT_EXTENSION_MODEL_CREATOR_NAME = "familiar.extension.model.creator"
+const val META_CONTENT_EXTENSION_MODEL_MAPPER_NAME = "familiar.extension.model.mapper"
 /**
  * intent filter key
  */

@@ -1,8 +1,6 @@
 package justbucket.familiar.extension
 
-import justbucket.familiar.extension.exception.Failure
-import justbucket.familiar.extension.exception.Failure.FeatureFailure
-import justbucket.familiar.extension.functional.Either
+import android.content.Context
 import justbucket.familiar.extension.model.DetailModel
 import justbucket.familiar.extension.model.MasterModel
 
@@ -10,26 +8,31 @@ import justbucket.familiar.extension.model.MasterModel
  * An extendable class for locating your content
  * Api is subject to change
  *
+ * @property extensionName Extension name. Should be overridden and kept unique and not [null]
+ * across [ExtensionConfigurator], [ExtensionLocator] and [ExtensionModelMapper]
+ *
  * @author JustBucket on 2019-07-24
  */
-open class ExtensionLocator {
+open class ExtensionLocator(val extensionName: String) {
 
     /**
-     * Extension name. Should be overridden and kept unique and not [null] across
-     * [ExtensionConfigurator], [ExtensionLocator] and [ExtensionModelCreator]
+     * An application [Context] for content locating purposes
      */
-    lateinit var extensionName: String
+    lateinit var context: Context
 
     /**
-     * Searches somewhere by given query and returns [Either] a [Failure] or a [Set] of [MasterModel]s
-     * Default implementation returns [Failure]
+     * Searches somewhere by given query and returns a [Set] of [MasterModel]s
+     * Default implementation returns [null]
      */
-    fun getMasterForSearch(query: String): Either<Failure, Set<MasterModel>> = Either.Left(FeatureFailure())
+    open fun getMasterForSearch(query: String): Set<MasterModel> = emptySet()
 
     /**
-     * Returns [Either] a [Failure] or a [DetailModel] for a given [MasterModel],
+     * Returns a [DetailModel] for a given [MasterModel],
      * derived from search (that is, not yet saved)
      */
-    fun getDetailsForSearch(masterModel: MasterModel): Either<FeatureFailure, DetailModel> =
-            Either.Left(FeatureFailure())
+    open fun getDetailsForSearch(masterModel: MasterModel): DetailModel = DetailModel(
+        imageLink = masterModel.imageLink,
+        title = masterModel.title,
+        description = masterModel.description
+    )
 }
