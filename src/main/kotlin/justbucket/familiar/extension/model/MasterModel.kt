@@ -15,7 +15,7 @@ package justbucket.familiar.extension.model
  * @author JustBucket on 2019-07-22
  */
 open class MasterModel(
-    val id: Long = -1,
+    val id: Long,
     val extensionName: String = "",
     val imageLink: String = "",
     val title: String = "",

@@ -1,6 +1,6 @@
 package justbucket.familiar.extension
 
-import android.view.View
+import android.view.ViewGroup
 import justbucket.familiar.extension.model.DetailModel
 import justbucket.familiar.extension.model.MasterModel
 import justbucket.familiar.extension.model.ShareModel
@@ -19,15 +19,15 @@ open class ExtensionConfigurator(val extensionName: String) {
     /**
      * Configure the main recycler's view holder
      */
-    open fun configureMasterModel(): ((View, MasterModel) -> Unit)? = null
+    open fun configureMasterModel(): ((ViewGroup, MasterModel) -> Unit)? = null
 
     /**
      * Configure the detail view of your content
      */
-    open fun configureDetailModel(): ((View, DetailModel) -> Unit)? = null
+    open fun configureDetailModel(): ((ViewGroup, DetailModel) -> Unit)? = null
 
     /**
      * Configures the dialog when saving your shared content
      */
-    open fun configureShareModel(): ((View, ShareModel, (ShareModel) -> Unit) -> Unit)? = null
+    open fun configureShareModel(): ((ViewGroup, ShareModel, (ShareModel) -> Unit) -> Unit)? = null
 }

@@ -24,13 +24,13 @@ open class ExtensionLocator(val extensionName: String) {
      * Searches somewhere by given query and returns a [Set] of [MasterModel]s
      * Default implementation returns [null]
      */
-    open fun getMasterForSearch(query: String): Set<MasterModel> = emptySet()
+    open suspend fun getMasterForSearch(query: String): Set<MasterModel> = emptySet()
 
     /**
      * Returns a [DetailModel] for a given [MasterModel],
      * derived from search (that is, not yet saved)
      */
-    open fun getDetailsForSearch(masterModel: MasterModel): DetailModel = DetailModel(
+    open suspend fun getDetailsForSearch(masterModel: MasterModel): DetailModel = DetailModel(
         imageLink = masterModel.imageLink,
         title = masterModel.title,
         description = masterModel.description
