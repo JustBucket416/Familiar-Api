@@ -19,32 +19,32 @@ open class ExtensionModelMapper(val extensionName: String) {
     /**
      * Create a [MasterModel] from json
      */
-    open fun mapRemoteToMaster(jsonString: String): MasterModel? = null
+    open suspend fun mapRemoteToMaster(jsonString: String): MasterModel? = null
 
     /**
      * Create a [MasterModel] from json
      */
-    open fun mapLocalToMaster(id: Long, jsonString: String): MasterModel? = null
+    open suspend fun mapLocalToMaster(id: Long, jsonString: String): MasterModel? = null
 
     /**
-     * Create a [MasterModel] from json
+     * Create a json from [MasterModel]
      */
-    open fun mapMasterToLocal(masterModel: MasterModel): String? = null
-
-    /**
-     * Create a [DetailModel] from json
-     */
-    open fun mapRemoteToDetail(jsonString: String): DetailModel? = null
+    open suspend fun mapMasterToLocal(masterModel: MasterModel): String? = null
 
     /**
      * Create a [DetailModel] from json
      */
-    open fun mapLocalToDetail(jsonString: String): DetailModel? = null
+    open suspend fun mapRemoteToDetail(jsonString: String): DetailModel? = null
 
     /**
      * Create a [DetailModel] from json
      */
-    open fun mapDetailToLocal(detailModel: DetailModel): String? = null
+    open suspend fun mapLocalToDetail(jsonString: String): DetailModel? = null
+
+    /**
+     * Create a json from [DetailModel]
+     */
+    open suspend fun mapDetailToLocal(detailModel: DetailModel): String? = null
 
     /**
      * Create a [ShareModel] from an [Intent]'s [Uri]

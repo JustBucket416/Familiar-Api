@@ -13,8 +13,8 @@ package justbucket.familiar.extension.model
  * @author JustBucket on 2019-07-22
  */
 open class DetailModel(
-    val extensionName: String = "",
-    val title: String = "",
-    val imageLink: String = "",
-    val description: String = ""
+    open val extensionName: String = "",
+    open val title: String = "",
+    open val imageLink: String = "",
+    open val description: String = ""
 )

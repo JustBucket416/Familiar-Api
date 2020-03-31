@@ -1,5 +1,6 @@
 package justbucket.familiar.extension
 
+import android.content.Context
 import android.view.ViewGroup
 import justbucket.familiar.extension.model.DetailModel
 import justbucket.familiar.extension.model.MasterModel
@@ -17,17 +18,46 @@ import justbucket.familiar.extension.model.ShareModel
 open class ExtensionConfigurator(val extensionName: String) {
 
     /**
-     * Configure the main recycler's view holder
+     * This context is used to inflate your xml files, e.g. layout resources via [LayoutInflater]
+     * Do not use ViewGroup context or your attributes won't resolve
      */
-    open fun configureMasterModel(): ((ViewGroup, MasterModel) -> Unit)? = null
+    lateinit var themedAppContext: Context
+
+    /**
+     * Configure the main recycler's view holder
+     * [parent] is view holder that you should inflate with data from [model]
+     * Return `false` to if you want main app to configure content by default
+     */
+    open fun configureMasterModel(
+        parent: ViewGroup,
+        model: MasterModel
+    ): Boolean {
+        return false
+    }
 
     /**
      * Configure the detail view of your content
+     * [parent] is expanding layout that you should inflate with data from [model]
+     * Return `false` to if you want main app to configure content by default
      */
-    open fun configureDetailModel(): ((ViewGroup, DetailModel) -> Unit)? = null
+    open fun configureDetailModel(
+        parent: ViewGroup,
+        model: DetailModel
+    ): Boolean {
+        return false
+    }
 
     /**
      * Configures the dialog when saving your shared content
+     * [parent] is dialog to that you should inflate with data from [model]
+     * invoke [saveClickListener] to save your model
+     * Return `false` to if you want main app to configure content by default
      */
-    open fun configureShareModel(): ((ViewGroup, ShareModel, (ShareModel) -> Unit) -> Unit)? = null
+    open fun configureShareModel(
+        parent: ViewGroup,
+        model: ShareModel,
+        saveClickListener: (ShareModel) -> Unit
+    ): Boolean {
+        return false
+    }
 }
