@@ -2,7 +2,8 @@ package justbucket.familiar.extension
 
 import android.content.Context
 import android.view.ViewGroup
-import justbucket.familiar.extension.model.DetailModel
+import androidx.fragment.app.Fragment
+import justbucket.familiar.extension.fragment.DetailFragment
 import justbucket.familiar.extension.model.MasterModel
 import justbucket.familiar.extension.model.ShareModel
 
@@ -37,18 +38,12 @@ open class ExtensionConfigurator(val extensionName: String) {
 
     /**
      * Configure the detail view of your content
-     * [parent] is expanding layout that you should inflate with data from [model]
-     * Return `false` to if you want main app to configure content by default
+     * Uses default [Fragment] mechanism with some peculiar additions, see [DetailFragment]
      */
-    open fun configureDetailModel(
-        parent: ViewGroup,
-        model: DetailModel
-    ): Boolean {
-        return false
-    }
+    open fun configureDetailModel(masterModel: MasterModel): DetailFragment? = null
 
     /**
-     * Configures the dialog when saving your shared content
+     * Configure the dialog when saving your shared content
      * [parent] is dialog to that you should inflate with data from [model]
      * invoke [saveClickListener] to save your model
      * Return `false` to if you want main app to configure content by default

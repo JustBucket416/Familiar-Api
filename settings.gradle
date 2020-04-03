@@ -1,1 +1,1 @@
-include ':extension'
+rootProject.name = 'extension'

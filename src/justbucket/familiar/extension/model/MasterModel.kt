@@ -1,5 +1,8 @@
 package justbucket.familiar.extension.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 /**
  * An extendable model for master view
  * It is highly advised to override [equals]/[hashCode] in your subclass
@@ -14,6 +17,7 @@ package justbucket.familiar.extension.model
  *
  * @author JustBucket on 2019-07-22
  */
+@Parcelize
 open class MasterModel(
     open val id: Long,
     open val extensionName: String = "",
@@ -21,4 +25,4 @@ open class MasterModel(
     open val title: String = "",
     open val description: String = "",
     open val detailViewLink: String? = null
-)
+) : Parcelable

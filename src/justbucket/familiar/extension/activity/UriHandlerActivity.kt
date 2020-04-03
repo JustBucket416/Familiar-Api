@@ -30,7 +30,7 @@ open class UriHandlerActivity : Activity() {
             exit()
         } else {
             Toast.makeText(
-                this, "You should install the Familiar app to save the content",
+                this, "You should install main Familiar app to save this content",
                 Toast.LENGTH_LONG
             ).show()
             Handler(mainLooper).postDelayed({ exit() }, Toast.LENGTH_LONG.toLong())
