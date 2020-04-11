@@ -15,7 +15,7 @@ import justbucket.familiar.extension.resource.Resource
  *
  * @author JustBucket on 2020-04-03
  */
-class DetailFragment : Fragment() {
+open class DetailFragment : Fragment() {
 
     /**
      * Use this to get [LayoutInflater] and load your [DetailModel]

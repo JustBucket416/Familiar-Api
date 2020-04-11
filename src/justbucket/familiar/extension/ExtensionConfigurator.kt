@@ -40,7 +40,7 @@ open class ExtensionConfigurator(val extensionName: String) {
      * Configure the detail view of your content
      * Uses default [Fragment] mechanism with some peculiar additions, see [DetailFragment]
      */
-    open fun configureDetailModel(masterModel: MasterModel): DetailFragment? = null
+    open fun configureDetailModel(masterModel: MasterModel): Fragment? = null
 
     /**
      * Configure the dialog when saving your shared content
