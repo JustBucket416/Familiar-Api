@@ -27,6 +27,10 @@ const val META_CONTENT_EXTENSION_LOCATOR_NAME = "familiar.extension.locator"
  */
 const val META_CONTENT_EXTENSION_MODEL_MAPPER_NAME = "familiar.extension.model.mapper"
 /**
+ * meta-data extension initializer key
+ */
+const val META_CONTENT_EXTENSION_INITIALIZER_NAME = "familiar.extension.initializer"
+/**
  * intent filter key
  */
 const val EXTENSION_SHARE_ACTION = "familiar.intent.action.HANDLE_URI"

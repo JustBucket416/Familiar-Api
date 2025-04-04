@@ -1,15 +1,11 @@
 package justbucket.familiar.extension.model
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-
 /**
- * An extendable model for master view
+ * An extendable model for list view
  * It is highly advised to override [equals]/[hashCode] in your subclass
  *
- * @constructor creates an instance of [DetailModel]
- * @property id should not be assigned
  * @property extensionName name of extension
+ * @property id do not assign
  * @property imageLink path to the image in master view
  * @property title content title
  * @property description content description
@@ -17,12 +13,20 @@ import kotlinx.android.parcel.Parcelize
  *
  * @author JustBucket on 2019-07-22
  */
-@Parcelize
-open class MasterModel(
-    open val id: Long,
-    open val extensionName: String = "",
+abstract class ListModel(
+    open val extensionName: String,
+    open var id: Int = DEFAULT_LIST_MODEL_ID,
     open val imageLink: String = "",
     open val title: String = "",
     open val description: String = "",
     open val detailViewLink: String? = null
-) : Parcelable
+) {
+
+    abstract override operator fun equals(other: Any?): Boolean
+
+    abstract override fun hashCode(): Int
+
+    abstract override fun toString(): String
+}
+
+const val DEFAULT_LIST_MODEL_ID = -1
