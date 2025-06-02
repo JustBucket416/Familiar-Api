@@ -1,9 +1,10 @@
-package justbucket.familiar.extension
+package justbucket.familiar.extension.library
 
+import android.content.Context
 import androidx.compose.runtime.Composable
-import justbucket.familiar.extension.model.DetailModel
-import justbucket.familiar.extension.model.ListModel
-import justbucket.familiar.extension.model.ShareModel
+import justbucket.familiar.extension.library.model.DetailModel
+import justbucket.familiar.extension.library.model.ListModel
+import justbucket.familiar.extension.library.model.ShareModel
 
 /**
  * An extendable class for handling how your content looks
@@ -16,10 +17,14 @@ import justbucket.familiar.extension.model.ShareModel
  */
 abstract class ExtensionConfigurator<List : ListModel, Detail : DetailModel>(val extensionName: String) {
 
+    lateinit var extensionContext: Context
+
     abstract val listModelConfigurator: (@Composable (List) -> Unit)?
 
     abstract val detailModelConfigurator: (@Composable (Detail) -> Unit)
 
-    abstract val shareModelConfigurator: (@Composable (ShareModel, (ShareModel) -> Unit) -> Unit)?
+    abstract val shareModelConfigurator: ShareModelConfig<List, Detail>?
 
 }
+
+typealias ShareModelConfig<ListModel, DetailModel> = (@Composable (ShareModel, (ListModel, DetailModel, List<String>) -> Unit) -> Unit)

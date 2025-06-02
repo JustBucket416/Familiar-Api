@@ -1,4 +1,4 @@
-package justbucket.familiar.extension.model
+package justbucket.familiar.extension.library.model
 
 /**
  * An extendable model for saving content shared via intent

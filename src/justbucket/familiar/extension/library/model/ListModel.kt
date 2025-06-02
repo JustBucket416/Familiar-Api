@@ -1,8 +1,7 @@
-package justbucket.familiar.extension.model
+package justbucket.familiar.extension.library.model
 
 /**
  * An extendable model for list view
- * It is highly advised to override [equals]/[hashCode] in your subclass
  *
  * @property extensionName name of extension
  * @property id do not assign
@@ -15,7 +14,7 @@ package justbucket.familiar.extension.model
  */
 abstract class ListModel(
     open val extensionName: String,
-    open var id: Int = DEFAULT_LIST_MODEL_ID,
+    open var id: Long,
     open val imageLink: String = "",
     open val title: String = "",
     open val description: String = "",
@@ -28,5 +27,3 @@ abstract class ListModel(
 
     abstract override fun toString(): String
 }
-
-const val DEFAULT_LIST_MODEL_ID = -1

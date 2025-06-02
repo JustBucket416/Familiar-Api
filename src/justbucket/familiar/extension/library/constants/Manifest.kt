@@ -1,4 +1,4 @@
-package justbucket.familiar.extension.constants
+package justbucket.familiar.extension.library.constants
 
 /**
  * Use only values, not their constant names
@@ -29,8 +29,12 @@ const val META_CONTENT_EXTENSION_MODEL_MAPPER_NAME = "familiar.extension.model.m
 /**
  * meta-data extension initializer key
  */
-const val META_CONTENT_EXTENSION_INITIALIZER_NAME = "familiar.extension.initializer"
+const val META_CONTENT_EXTENSION_SETTINGS_NAME = "familiar.extension.settings"
 /**
  * intent filter key
  */
 const val EXTENSION_SHARE_ACTION = "familiar.intent.action.HANDLE_URI"
+
+const val BUNDLE_EXTENSION_KEY = "familiar.intent.bundle.extension.key"
+
+const val SHARED_UID = "justbucket.familiar.shareduser"

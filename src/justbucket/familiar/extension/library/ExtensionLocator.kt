@@ -1,15 +1,15 @@
-package justbucket.familiar.extension
+package justbucket.familiar.extension.library
 
 import android.content.Context
-import justbucket.familiar.extension.model.DetailModel
-import justbucket.familiar.extension.model.ListModel
+import justbucket.familiar.extension.library.model.DetailModel
+import justbucket.familiar.extension.library.model.ListModel
 
 /**
  * An extendable class for locating your content
  * Api is subject to change
  *
  * @property extensionName Extension name. Should be overridden and kept unique and not [null]
- * across [ExtensionConfigurator], [ExtensionLocator] and [ExtensionModelMapper]
+ * across [justbucket.familiar.extension.library.ExtensionConfigurator], [ExtensionLocator] and [ExtensionModelMapper]
  *
  * @author JustBucket on 2019-07-24
  */
