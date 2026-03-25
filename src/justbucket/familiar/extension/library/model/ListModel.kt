@@ -4,7 +4,7 @@ package justbucket.familiar.extension.library.model
  * An extendable model for list view
  *
  * @property extensionName name of extension
- * @property id do not assign
+ * @property id model id
  * @property imageLink path to the image in master view
  * @property title content title
  * @property description content description
@@ -14,7 +14,7 @@ package justbucket.familiar.extension.library.model
  */
 abstract class ListModel(
     open val extensionName: String,
-    open var id: Long,
+    open val id: Long,
     open val imageLink: String = "",
     open val title: String = "",
     open val description: String = "",

@@ -19,22 +19,22 @@ abstract class ExtensionModelMapper(val extensionName: String) {
     /**
      * Create a [ListModel] from json
      */
-    abstract fun mapLocalToList(id: Long, name: String, modelContent: String): ListModel
+    abstract fun mapLocalToList(id: Long, name: String, modelContent: ByteArray): ListModel
 
     /**
      * Create a json from [ListModel]
      */
-    abstract fun mapListToLocal(model: ListModel): String
+    abstract fun mapListToLocal(model: ListModel): ByteArray
 
     /**
      * Create a [DetailModel] from json
      */
-    abstract fun mapLocalToDetail(modelContent: String): DetailModel
+    abstract fun mapLocalToDetail(modelContent: ByteArray): DetailModel
 
     /**
      * Create a json from [DetailModel]
      */
-    abstract fun mapDetailToLocal(model: DetailModel): String
+    abstract fun mapDetailToLocal(model: DetailModel): ByteArray
 
     /**
      * Create a [ShareModel] from an [Intent]'s [Uri]

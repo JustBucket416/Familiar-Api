@@ -1,16 +1,17 @@
 plugins {
-    id 'com.android.library' version '8.7.3'
-    id 'org.jetbrains.kotlin.android' version '2.1.10'
-    id 'org.jetbrains.kotlin.plugin.parcelize' version '2.1.10'
-    id 'org.jetbrains.kotlin.plugin.compose' version '2.1.10'
+    id 'com.android.library' version '8.13.2'
+    id 'org.jetbrains.kotlin.android' version '2.3.0'
+    id 'org.jetbrains.kotlin.plugin.parcelize' version '2.3.0'
+    id 'org.jetbrains.kotlin.plugin.compose' version '2.3.0'
 }
 
 android {
     namespace 'justbucket.familiar.extension'
+    compileSdkVersion 36
 
     defaultConfig {
-        minSdk 21
-        compileSdk 34
+        minSdk 23
+        targetSdk 36
     }
 
     sourceSets.main {
@@ -24,9 +25,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_21
         targetCompatibility JavaVersion.VERSION_21
     }
-    kotlinOptions {
-        jvmTarget = '21'
-    }
 
     buildTypes.release {
         minifyEnabled false
@@ -34,8 +32,8 @@ android {
 }
 
 dependencies {
-    compileOnly 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.10'
-    compileOnly 'androidx.compose.runtime:runtime:1.7.8'
-    compileOnly 'androidx.compose.foundation:foundation-layout-android:1.7.8'
-    compileOnly 'androidx.compose.foundation:foundation-android:1.7.8'
+    compileOnly 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.3.0'
+    compileOnly 'androidx.compose.runtime:runtime:1.10.0'
+    compileOnly 'androidx.compose.foundation:foundation-layout-android:1.10.0'
+    compileOnly 'androidx.compose.foundation:foundation-android:1.10.0'
 }
